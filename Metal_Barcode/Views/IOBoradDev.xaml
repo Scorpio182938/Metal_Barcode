@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="Metal_Barcode.Views.IOBoradDev"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Metal_Barcode.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ListViewItemStyle" TargetType="{x:Type ListViewItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Height" Value="40"></Setter>
+        </Style>
+
+    </UserControl.Resources>
+        
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Black" VerticalContentAlignment="Center" HorizontalAlignment="Center">IO卡输入</Label>
+        <Label Grid.Row="0" Grid.Column="1" FontSize="20" FontWeight="Black" VerticalContentAlignment="Center" HorizontalAlignment="Center">IO卡输出</Label>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <ListView ItemsSource="{Binding Path=IoINCollectionView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  Width="150">
+                            <GridViewColumnHeader CommandParameter="IOStatus" VerticalContentAlignment="Center" HorizontalAlignment="Center">状态</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<TextBlock Text="{Binding IOStatus}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>-->
+                                    <Image Source="{Binding IOStatus}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                                    
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  Width="150">
+                            <GridViewColumnHeader CommandParameter="IOIndex" VerticalContentAlignment="Center" HorizontalAlignment="Center">DI序号</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding IOIndex}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn >
+                            <GridViewColumnHeader CommandParameter="IOName" VerticalContentAlignment="Center" HorizontalAlignment="Center">DI注解</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding IOName}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" >
+
+            <ListView ItemsSource="{Binding Path=IoOUTCollectionView}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  Width="150">
+                            <GridViewColumnHeader CommandParameter="IOStatus" VerticalContentAlignment="Center" HorizontalAlignment="Center">状态</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding IOStatus}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn  Width="150">
+                            <GridViewColumnHeader CommandParameter="IOIndex" VerticalContentAlignment="Center" HorizontalAlignment="Center">DI序号</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding IOIndex}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Width="200">
+                            <GridViewColumnHeader CommandParameter="IOName" VerticalContentAlignment="Center" HorizontalAlignment="Center">DI注解</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding IOName}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn >
+                            <GridViewColumnHeader CommandParameter="IOOper" VerticalContentAlignment="Center" HorizontalAlignment="Center">操作</GridViewColumnHeader>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<TextBlock Text="{Binding IOOper}" TextAlignment="Center" MinWidth="{Binding Path=ActualWidth,ElementName=column}"></TextBlock>-->
+                                    <ToggleButton Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" ToolTip="MaterialDesignSwitchAccentToggleButton" IsChecked="{Binding IOOper}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+    
+</UserControl>
